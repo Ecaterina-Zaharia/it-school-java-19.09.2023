@@ -130,7 +130,230 @@ public class Car extends Vehicle {
 
 5. Write a Java program to create a class known as "BankAccount" with methods called deposit() and withdraw(). Create a subclass called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.
 
+
+public class Main {
+    public static void main(String[] args) {
+    BankAccount bankAccount = new BankAccount(500);
+            SavingsAccount savingsAccount = new SavingsAccount(500);
+            bankAccount.deposit(1000);
+            System.out.println("New balance after depositing 1000$ is: " + bankAccount.getUserBalance());
+
+            savingsAccount.withdraw(1450);
+            System.out.println("New balance after withdraw 1450$ is: " + savingsAccount.getUserBalance());
+    }
+
+    public class BankAccount {
+
+        private double userBalance;
+
+        public BankAccount(double userBalance) {
+            this.userBalance = userBalance;
+        }
+
+        public void deposit(double amount) {
+            userBalance += amount;
+
+        }
+
+        public void withdraw(double amount) {
+            if (userBalance >= amount){
+                userBalance -=amount;
+            } else {
+                System.out.println("Insufficient balance");
+            }
+        }
+
+        public double getUserBalance() {
+            return userBalance;
+        }
+
+        public void setUserBalance(double userBalance) {
+            this.userBalance = userBalance;
+        }
+    }
+public class SavingsAccount extends BankAccount {
+
+
+    public SavingsAccount(double userBalance) {
+        super(userBalance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (getUserBalance() - amount < 100){
+            System.out.println("Minimum balance of $100 required!");
+        } else {
+            super.withdraw(amount);
+        }
+    }
+}
+
+
+
 6. Write a Java program to create a vehicle class hierarchy. The base class should be Vehicle, with subclasses Truck, Car and Motorcycle. Each subclass should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.
+
+public class Main {
+    public static void main(String[] args) {
+
+    Truck truck = new Truck("Tatra", "Tatra 810 4x4", 2020, "GASOLINE", 8.112, 4.5);
+            CarOne carone = new CarOne("Volkswagen", "Virtus", 2019, "HYBRID", 6.123, 8);
+            Motorcycle motorcycle = new Motorcycle("Massimo Motor", "Warrior200", 2018, "GASOLINE", 2.1);
+
+            System.out.println("Truck Model: " + truck.getModel());
+            System.out.println("Fuel Efficiency: " + truck.calculateFuelEfficiency() + " mpg");
+            System.out.println("Distance Traveled: " + truck.calculateDistanceTraveled() + " miles");
+            System.out.println("Max Speed: " + truck.getMaxSpeed() + " mph\n");
+
+            System.out.println("Car Model: " + carone.getModel());
+            System.out.println("Fuel Efficiency: " + carone.calculateFuelEfficiency() + " mpg");
+            System.out.println("Distance Traveled: " + carone.calculateDistanceTraveled() + " miles");
+            System.out.println("Max Speed: " + carone.getMaxSpeed() + " mph\n");
+
+            System.out.println("Motorcycle Model: " + motorcycle.getModel());
+            System.out.println("Fuel Efficiency: " + motorcycle.calculateFuelEfficiency() + " mpg");
+            System.out.println("Distance Traveled: " + motorcycle.calculateDistanceTraveled() + " miles");
+            System.out.println("Max Speed: " + motorcycle.getMaxSpeed() + " mph");
+    }
+
+    public class VehicleOne {
+
+        private String make;
+        private String model;
+        private int year;
+        private String fuelType;
+        private double fuelEfficiency;
+
+        public VehicleOne(String make, String model, int year, String fuelType, double fuelEfficiency) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            this.fuelType = fuelType;
+            this.fuelEfficiency = fuelEfficiency;
+        }
+
+        public double calculateFuelEfficiency() {
+            return 0;
+        }
+
+        public double calculateDistanceTraveled() {
+            return 0;
+        }
+
+        public double getMaxSpeed(){
+            return getMaxSpeed();
+
+        }
+
+        public String getMake() {
+            return make;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public int getYear() {
+            return year;
+        }
+
+        public String getFuelType() {
+            return fuelType;
+        }
+
+        public double getFuelEfficiency() {
+            return fuelEfficiency;
+        }
+    }
+
+    public class Truck extends VehicleOne {
+
+        private double cargoCapacity;
+
+        public Truck(String make, String model, int year, String fuelType, double fuelEfficiency,
+                     double cargoCapacity){
+            super(make, model, year, fuelType, fuelEfficiency);
+            this.cargoCapacity = cargoCapacity;
+        }
+
+        @Override
+        public double calculateFuelEfficiency(){
+            return getFuelEfficiency()*(1.0 / (1.0 + (getCargoCapacity() / 1000.0)));
+        }
+
+        @Override
+        public  double calculateDistanceTraveled() {
+            return calculateFuelEfficiency() * getFuelEfficiency();
+        }
+
+        @Override
+        public double getMaxSpeed(){
+            return 80.0;
+        }
+
+
+
+        public double getCargoCapacity() {
+            return cargoCapacity;
+        }
+    }
+
+    public class CarOne extends VehicleOne {
+
+        private int numSeats;
+
+        public CarOne(String make, String model, int year, String fuelType, double fuelEfficiency,
+                      int numSeats){
+            super(make, model, year, fuelType, fuelEfficiency);
+        }
+
+        @Override
+        public double calculateFuelEfficiency(){
+            return getFuelEfficiency() * (1.0 / (1.0 + (getNumSeats() / 5.0)));
+        }
+
+        @Override
+        public double calculateDistanceTraveled(){
+            return calculateFuelEfficiency() * getFuelEfficiency();
+        }
+
+        @Override
+        public double getMaxSpeed(){
+            return 120.0;
+        }
+
+        public int getNumSeats() {
+            return numSeats;
+        }
+
+    }
+    public class Motorcycle extends VehicleOne {
+
+        private double engineDisplacement;
+
+        public Motorcycle(String make, String model, int year, String fuelType, double fuelEfficiency){
+            super(make, model, year, fuelType, fuelEfficiency);
+        }
+
+        @Override
+        public double calculateFuelEfficiency(){
+            return getFuelEfficiency() * (1.0 / (1.0 + (getEngineDisplacement() / 1000.0)));
+        }
+
+        @Override
+        public double calculateDistanceTraveled(){
+            return calculateFuelEfficiency() * getFuelEfficiency();
+        }
+
+        @Override
+        public double getMaxSpeed(){
+            return 80.0;
+        }
+
+        public double getEngineDisplacement() {
+            return engineDisplacement;
+        }
+    }
+
 
 7. Write a Java program to create a class known as Person with methods called getFirstName() and getLastName(). Create a subclass called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title.
 
