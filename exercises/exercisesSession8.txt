@@ -5,21 +5,335 @@
     Create subclasses: SavingsAccount and CurrentAccount that extend the BankAccount class and implement the respective methods to handle deposits and withdrawals for each account type.
     For example, for SavingsAccount should not allow the user to withdraw if the balance is less than 100.
 
+public abstract class BankAccount {
+
+    public abstract void deposit();
+
+    public abstract void withdraw();
+}
+
+public class SavingsAccount extends BankAccount {
+
+    @Override
+    public void deposit(){
+        System.out.println("This is deposit method in Savin account class");
+    }
+
+    @Override
+    public void withdraw() {
+        System.out.println("This is withdraw method in Saving account class");
+    }
+
+}
+
+public class CurrentAccount extends BankAccount{
+
+    @Override
+    public void deposit(){
+        System.out.println("This is deposint method from Current Accont class");
+    }
+
+    @Override
+    public void withdraw(){
+        System.out.println("This is withdraw method from Current Accont class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+SavingsAccount savingsAccount =  new SavingsAccount();
+        CurrentAccount currentAccount = new CurrentAccount();
+
+        savingsAccount.withdraw();
+        savingsAccount.deposit();
+
+        currentAccount.withdraw();
+        currentAccount.deposit();
+    }
+
 2. Write a Java program to create an abstract class Shape3D with abstract methods calculateVolume() and calculateSurfaceArea().
     Create subclasses Sphere and Cube that extend the Shape3D class and implement the respective methods to calculate the volume and surface area of each shape.
 
+    public abstract class Shape3D {
+
+        public abstract void calculateVolume();
+
+        public abstract void calculateSurfaceArea();
+    }
+
+public class Sphere extends Shape3D{
+
+    @Override
+    public void calculateVolume(){
+        System.out.println("This is calculateVolume method from Sphere class");
+    }
+
+    @Override
+    public void calculateSurfaceArea(){
+        System.out.println("This is calculateSurfaceArea method from Sphere class");
+    }
+}
+
+public class Cube extends Shape3D {
+
+    @Override
+    public void calculateVolume(){
+        System.out.println("This is calculateVolume method from Cube class");
+    }
+
+    @Override
+    public void calculateSurfaceArea(){
+        System.out.println("This is calculateSurfaceArea method from Cube class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+Sphere sphere = new Sphere();
+        Cube cube = new Cube();
+
+        sphere.calculateSurfaceArea();
+        sphere.calculateVolume();
+
+        cube.calculateVolume();
+        cube.calculateSurfaceArea();
+    }
+
 3. Write a Java program to create an abstract class GeometricShape with abstract methods area() and perimeter().
     Create subclasses Triangle and Square that extend the GeometricShape class and implement the respective methods to calculate the area and perimeter of each shape.
+
+    public abstract class GeometricShape {
+        public abstract void area();
+
+        public abstract void perimeter();
+    }
+
+public class Triangle extends GeometricShape {
+
+    @Override
+    public void area() {
+        System.out.println("This is area method from Triangle class");
+    }
+
+    @Override
+    public void perimeter(){
+        System.out.println("This is perimeter method from Triangle class");
+    }
+}
+
+public class Square extends GeometricShape{
+
+    @Override
+    public void area(){
+        System.out.println("This is area method from Square class");
+    }
+
+    @Override
+    public void perimeter(){
+        System.out.println("This is perimeter method from Square class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+ Triangle triangle = new Triangle();
+        Square square = new Square();
+
+        triangle.area();
+        triangle.perimeter();
+
+        square.area();
+        square.perimeter();
+    }
 
 4. Write a Java program to create an interface Shape with the getArea() method.
     Create three classes Rectangle, Circle, and Triangle that implement the Shape interface.
     Implement the getArea() method for each of the three classes.
 
+    public interface Shape {
+
+        void getArea();
+    }
+
+public class Rectangle implements Shape{
+
+    @Override
+    public void getArea(){
+        System.out.println("This is getArea method implementation for Rectangle class ");
+    }
+}
+
+public class Circle implements Shape {
+
+    @Override
+    public void getArea() {
+        System.out.println("This is getArea method implementation for Circle class");
+    }
+}
+
+public class Triangle implements Shape{
+
+    @Override
+    public void getArea(){
+        System.out.println("This is getArea method implementation for Triangle class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+Rectangle rectangle = new Rectangle();
+        Circle circle = new Circle();
+        Triangle triangle = new Triangle();
+
+        rectangle.getArea();
+        circle.getArea();
+        triangle.getArea();
+    }
+
 5. Write a Java program to create an interface Resizable with methods resizeWidth(int width) and resizeHeight(int height) that allow an object to be resized.
     Create a class Rectangle that implements the Resizable interface and implements the resize methods.
 
+    public interface Resizable {
+
+        int resizeWidth(int width);
+
+        int resizeHeight(int height);
+    }
+
+public class RectangleOne implements Resizable{
+
+    @Override
+    public int resizeWidth(int width){
+        return width;
+    }
+
+    @Override
+    public int resizeHeight(int height){
+        return height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+RectangleOne rectangleOne = new RectangleOne();
+
+        rectangleOne.resizeHeight(100);
+        rectangleOne.resizeWidth(50);
+
+    }
+
 6. Create an interface Movable with a method void move(). Create a class Car that implements both the Drawable and Movable interfaces. Demonstrate how the class can use methods from both interfaces.
+
+public interface Movable {
+
+    void move();
+}
+
+public interface Drawable {
+
+    void draw();
+}
+
+public class Car implements Movable, Drawable {
+
+
+    @Override
+    public void move() {
+        System.out.println("This is implementation move method from Movable interface");
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("This is implementation draw method from Drawable interface");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+Car car = new Car();
+        car.draw();
+        car.move();
+    }
 
 7. Define an interface Shape with methods double area() and double perimeter(). Create another interface Resizable with a method void resize(double factor). Have a class Circle that implements both Shape and Resizable. Write code to demonstrate how you can use methods from both interfaces.
 
+public interface ShapeOne {
+
+    double area();
+
+    double perimeter();
+
+}
+
+public interface ResizableOne {
+
+    void resize(double factor);
+}
+
+public class CircleOne implements ShapeOne, ResizableOne {
+    @Override
+    public void resize(double factor) {
+        System.out.println("This is implementation resize method from ResizableOne interface");
+    }
+
+    @Override
+    public double area() {
+        return 0;
+    }
+
+    @Override
+    public double perimeter() {
+        return 0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+CircleOne circleOne = new CircleOne();
+
+        circleOne.resize(2.00);
+        circleOne.area();
+        circleOne.perimeter();
+
+    }
+
 8. Define an interface Animal with a method void speak(). Create an interface Mammal that extends the Animal interface and adds a method void walk(). Create a class Dog that implements the Mammal interface. Demonstrate how you can use methods from both interfaces in the Dog class.
+
+public interface Animal {
+
+    void speak();
+}
+
+public interface Mammal extends Animal {
+
+    void walk();
+}
+
+public class Dog implements Mammal{
+
+    @Override
+    public void walk(){
+        System.out.println("The dog can walk");
+    }
+
+    @Override
+    public void speak(){
+        System.out.println("The dog can speak");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+Dog dog = new Dog();
+
+        dog.speak();
+        dog.walk();
+
+    }
