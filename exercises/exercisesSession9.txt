@@ -6,6 +6,56 @@ Use the debugger to identify how the polymorphism works.
     The subclasses shall then provide their actual implementation.
     In the main program, we declare instances of superclass, substituted with actual subclass; and invoke method defined in the superclass.
 
+    public class Main {
+        public static void main(String[] args) {
+
+            Monster monsterAdam = new MonsterAdam();
+            Monster witch = new Witch();
+
+
+            Monster[] monsters = new Monster[]{monsterAdam, witch};
+
+            for (Monster monster : monsters){
+                if(monster instanceof MonsterAdam){
+                    MonsterAdam innerMonsterAdam = (MonsterAdam) monster;
+                    innerMonsterAdam.attack();
+                } else if (monster instanceof Witch){
+                    Witch innerWitch = (Witch) monster;
+                    innerWitch.sayMagicWords();
+                }
+            }
+
+
+        }
+    }
+
+    public class Monster {
+
+        public void attack(){
+            System.out.println("Rrrrrrr...");
+        }
+    }
+
+    public class MonsterAdam extends Monster{
+
+        @Override
+        public void attack() {
+            System.out.println("Buuuuu.....");
+        }
+    }
+
+    public class Witch extends Monster {
+
+        public void sayMagicWords(){
+            System.out.println("Abra-cadabra");
+        }
+
+        @Override
+        public void attack() {
+            System.out.println("Ihihihi.....");
+        }
+    }
+
 2. Shape is an abstract class containing 2 abstract methods: getArea() and getPerimeter(), where its concrete subclasses must provide its implementation.
     All instance variables shall have protected access, i.e., accessible by its subclasses and classes in the same package.
     Mark all the overridden methods with annotation @Override.
@@ -15,3 +65,140 @@ Use the debugger to identify how the polymorphism works.
     Getter and setter for all the instance variables, and toString().
     Two abstract methods getArea() and getPerimeter() (shown in italics in the class diagram).
     The subclasses Circle and Rectangle shall override the abstract methods getArea() and getPerimeter() and provide the proper implementation. They also override the toString().
+
+public class Main {
+    public static void main(String[] args) {
+
+        Circle circle = new Circle();
+
+        circle.setR(4.0);
+        circle.getArea();
+        circle.getPerimeter();
+
+        Rectangle rectangle = new Rectangle();
+
+        rectangle.setLength(7);
+        rectangle.setWidth(3);
+        rectangle.getArea();
+        rectangle.getPerimeter();
+
+
+    }
+}
+
+public abstract class Shape {
+
+    protected String color;
+    protected Boolean filled;
+
+    public abstract void getArea();
+
+    public abstract void getPerimeter();
+
+    public String getColor() {
+        return color;
+    }
+
+    public Boolean getFilled() {
+        return filled;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setFilled(Boolean filled) {
+        this.filled = filled;
+    }
+}
+
+public class Circle extends Shape{
+
+    double r;
+    double pi = 3.14;
+
+    @Override
+    public void getArea() {
+        double area = 0;
+        area = pi * (r*r);
+        System.out.println("The area of Circle with the radius " + r + " is " + area);
+
+    }
+
+    @Override
+    public void getPerimeter() {
+        double p = 0;
+        p = 2 * pi * r;
+        System.out.println("The Perimeter of Circle with the radius " + r + " is " + p);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "r=" + r +
+                ", pi=" + pi +
+                ", color='" + color + '\'' +
+                ", filled=" + filled +
+                '}';
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+}
+
+public class Rectangle extends Shape{
+
+    int length;
+    int width;
+
+    @Override
+    public void getArea() {
+        int area = 0;
+        area = length * width;
+        System.out.println("The area of Rectangle with the length " + length + " and width "
+                + width + " is " + area);
+
+    }
+
+    @Override
+    public void getPerimeter() {
+        int p = 0;
+        p = (length + width) * 2;
+        System.out.println("The Perimeter of Rectangle with the length " + length + " and width "
+                + width + " is " + p);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "length=" + length +
+                ", width=" + width +
+                ", color='" + color + '\'' +
+                ", filled=" + filled +
+                '}';
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+}
+
