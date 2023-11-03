@@ -1,20 +1,223 @@
 // ArrayList
 1. Write a Java program to create a new array list, add some colors (string) and print out the collection.
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
+        }
+    }
+}
+
 2. Write a Java program to insert an element into the array list at the first position.
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+        list.addFirst("Green");
+
+                for(int i = 0; i < list.size(); i++){
+                    System.out.println(list.get(i));
+                }
+
+
 3. Write a Java program to retrieve an element (at a specified index) from a given array list.
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+System.out.println(list.get(4));
+
+
 4. Write a Java program to update specific array element by given element.
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+        list.set(4,"Pink");
+        System.out.println(list);
+
 5. Write a Java program to remove the third element from a array list.
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+        list.remove(3);
+        System.out.println(list);
+
+
+
 6. Write a Java program to search an element in a array list.
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Blue");
+        list.add("Red");
+        list.add("Yellow");
+        list.add("Orange");
+        list.add("Black");
+
+        if(list.contains("Pink")){
+            System.out.println("The element is found");
+        } else System.out.println("The element is not found");
 
 // LinkedList
 7. Write a Java program to insert the specified element at the front of a linked list.
+
+LinkedList<Integer> linkedList = new LinkedList<>();
+
+        linkedList.add(1);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+
+        linkedList.addFirst(0);
+        linkedList.offerFirst(11);
+
+        System.out.println(linkedList);
+
 8. Write a Java program to insert the specified element at the end of a linked list.
+
+LinkedList<Integer> linkedList = new LinkedList<>();
+
+        linkedList.add(1);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+
+        linkedList.addLast(7);
+                System.out.println(linkedList);
+
+
 9. Write a Java program to get the first and last occurrence of the specified elements in a linked list.
+
+LinkedList<Integer> linkedList = new LinkedList<>();
+
+        linkedList.add(1);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+
+        System.out.println("The first element is " + linkedList.getFirst()
+                        + " and the last element is " + linkedList.getLast());
 
 // HashSet
 10. Write a Java program to append the specified element to the end of a hash set.
+
+HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("One");
+        hashSet.add("Two");
+        hashSet.add("Three");
+        hashSet.add("Four");
+        hashSet.add("Five");
+
 11. Write a Java program to get the number of elements in a hash set.
+
+HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("One");
+        hashSet.add("Two");
+        hashSet.add("Three");
+        hashSet.add("Four");
+        hashSet.add("Five");
+
+        System.out.println("The number of elements in hashset is: " + hashSet.size());
+
 12. Write a Java program to empty a hash set.
+
+HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("One");
+        hashSet.add("Two");
+        hashSet.add("Three");
+        hashSet.add("Four");
+        hashSet.add("Five");
+
+        hashSet.removeAll(hashSet);
+
+        System.out.println(hashSet.size());
+
+
+
 13. Write a Java program to convert a hash set to a List/ArrayList.
+
+HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("One");
+        hashSet.add("Two");
+        hashSet.add("Three");
+        hashSet.add("Four");
+        hashSet.add("Five");
+
+        List<String> listarraylist = new ArrayList<>(hashSet);
+
+        System.out.println(listarraylist);
+
+
+
 14. Write a Java program to clone a hash set to another hash set.
+
+HashSet<String> hashSet = new HashSet<>();
+
+        hashSet.add("One");
+        hashSet.add("Two");
+        hashSet.add("Three");
+        hashSet.add("Four");
+        hashSet.add("Five");
+
+        HashSet<String> new_hushset = new HashSet<>();
+
+                System.out.println(new_hushset);
+                new_hushset = (HashSet) hashSet.clone();
+                System.out.println(new_hushset);
+
+
 
