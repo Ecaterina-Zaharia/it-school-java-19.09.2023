@@ -1,3 +1,5 @@
+import homeworkLesson13.Weekday;
+
 import java.util.Arrays;
 
 public class MainSession {
@@ -87,4 +89,6 @@ public class MainSession {
             return Arrays.stream(student.getGrade()).sum();
         }
     }
+
+
 }
